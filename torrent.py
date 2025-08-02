@@ -28,5 +28,5 @@ class Torrent:
             return [(self.info[b'name'].decode(), self.info[b'length'])]
         
 
-# torrent = Torrent('cosmos-laundromat.torrent')
+# torrent = Torrent('test_torrent.torrent')
 # print('URL: ', torrent.announce, '/length: ', torrent.total_length, '/Pieces: ', torrent.num_pieces)
