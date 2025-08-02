@@ -17,3 +17,16 @@ class Torrent:
         
     def _get_total_length(self):
         if b'files'in self.info:
+            return sum(file[b'length'] for file in self.info[b'files'])
+        else:
+            return self.info[b'length']
+        
+    def _get_files(self):
+        if b'files' in self.info:
+            return [(file[b'path'][0].decode(), file[b'length']) for file in self.info[b'files']]
+        else:
+            return [(self.info[b'name'].decode(), self.info[b'length'])]
+        
+
+torrent = Torrent('cosmos-laundromat.torrent')
+print('URL: ', torrent.announce, '/length: ', torrent.total_length, '/Pieces: ', torrent.num_pieces)
